@@ -4,8 +4,14 @@ import PocketNotes from "../components/AddGroup";
 
 function Groups(){
     return(
-        <div>    
-            Groups
+        <div className="groups">    
+            <div className="header">
+                <p className="header-text">Pocket Notes</p>
+            </div>
+            <div className="group-list">
+                <p> Names</p>
+
+            </div>
         </div>
     )
 }

@@ -1,0 +1,18 @@
+.groups {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 100px;
+}
+
+.header-text {
+    background-color: black;
+    color: white
+}
+
+.group-list {
+
+
+}
