@@ -5,12 +5,12 @@
 
 .Messages{
   height: 100vh;
-  width: 80%;
+  width: 75vw;
   background-color:#DAE5F5;
 }
 
 .Groups{
   height: 100vh;
-  width: 20%;
+  width: 25vw;
   background-color: white;
 }
