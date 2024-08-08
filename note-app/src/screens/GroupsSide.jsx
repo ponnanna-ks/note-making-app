@@ -41,7 +41,13 @@ function GroupsSide(){
         setError(false)
     }
 
+    function stripSpaces(str) {
+        if(!str) return str;
+        return str.replace(/^\s+/g, '');
+    }
+
     const getInitials = (name) => {
+        name = stripSpaces(name)
         const words = name.split(' ', 2);
         if (words.length > 1) {
           return words.map((word) => word[0].toUpperCase()).join('');
