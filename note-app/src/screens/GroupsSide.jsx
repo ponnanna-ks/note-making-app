@@ -4,13 +4,14 @@ import styles from "./Groups.module.css"
 import addIcon from "../assets/Add_icon.png"
 import { AppContext } from "../context/AppContext";
 function GroupsSide(){
+    const colors = ["#B38BFA", "#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]; 
+    let obj={"name":"","color":"", "data":""}
+
     const {groupsData, setGroupsData} = useContext(AppContext)
     const [openAddScreen, setOpenAddScreen] = useState(false)
     const [groupName, setGroupName] = useState("")
-    const [selectedColor, setSelectedColor] = useState(""); 
+    const [selectedColor, setSelectedColor] = useState(colors[0]); 
     const [error, setError] = useState(false)
-    let obj={"name":"","color":"", "data":""}
-    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F3FF33", "#FF33FB"]; 
 
     useEffect(()=>{
         if(groupName!==""){
@@ -26,6 +27,8 @@ function GroupsSide(){
             setGroupsData([...groupsData, obj])
             setOpenAddScreen(false)
             setGroupName("")
+            setSelectedColor(colors[0])
+            setError(false)
         }else{
             setError(true)
         }
@@ -34,15 +37,17 @@ function GroupsSide(){
     function onCancelClick() {
         setOpenAddScreen(false)
         setGroupName("")
+        setSelectedColor(colors[0])
+        setError(false)
     }
 
     const getInitials = (name) => {
-        const words = name.split(' ');
+        const words = name.split(' ', 2);
         if (words.length > 1) {
           return words.map((word) => word[0].toUpperCase()).join('');
         }
         return name[0].toUpperCase();
-      };
+    };
 
     return(
         <div className={styles.groups}>    
@@ -63,23 +68,23 @@ function GroupsSide(){
                 <img src={addIcon} alt="add"/>
             </div>
             {openAddScreen && (
-                <div className={styles.popupOverlay}>
-                    <div className={styles.popup}>
-                        <h2>Create New Group</h2>
+                <div className={styles.popupOverlay} onClick={()=>{onCancelClick()}}>
+                    <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+                        <p className={styles.textStyle}>Create New Group</p>
                         <div className={styles.groupName}>
-                            <p>Group Name</p>
+                            <p className={styles.textStyle} style={{marginTop: "15px"}}>Group Name</p>
                             <input
                                 type="text"
-                                placeholder="Group Name"
+                                placeholder="Enter group name"
                                 value={groupName}
                                 onChange={(e) => setGroupName(e.target.value)}
                             />
                         </div>
                         {error && (
-                            <p style={{color: "red", width: "100%"}}>Enter Group Name</p>
+                            <p style={{color: "red", width: "100%", fontSize:"10px"}}>Please enter group name</p>
                         )}
                         <div className={styles.groupName}>
-                            <p>Choose Color</p>
+                            <p className={styles.textStyle} style={{marginTop: "20px"}}>Choose Color</p>
                             <div className={styles.colorOptions}>
                                 {colors.map((color) => (
                                     <label key={color} className={styles.colorLabel}>
@@ -99,7 +104,6 @@ function GroupsSide(){
                             </div>
                         </div>
                         <button onClick={onSaveClick}>Create</button>
-                        <button onClick={onCancelClick}>Cancel</button>
                     </div>
                 </div>
             )}
