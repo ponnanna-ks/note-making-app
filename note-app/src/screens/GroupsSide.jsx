@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Groups.module.css"
 
 import addIcon from "../assets/Add_icon.png"
@@ -8,16 +8,27 @@ function GroupsSide(){
     const [openAddScreen, setOpenAddScreen] = useState(false)
     const [groupName, setGroupName] = useState("")
     const [selectedColor, setSelectedColor] = useState(""); 
+    const [error, setError] = useState(false)
     let obj={"name":"","color":"", "data":""}
     const colors = ["#FF5733", "#33FF57", "#3357FF", "#F3FF33", "#FF33FB"]; 
 
+    useEffect(()=>{
+        if(groupName!==""){
+            setError(false)
+        }
+    }, [groupName])
+
     function onSaveClick() {
-        obj.name=groupName
-        obj.color=selectedColor
-        obj.data=""
-        setGroupsData([...groupsData, obj])
-        setOpenAddScreen(false)
-        setGroupName("")
+        if(groupName !=="" && selectedColor !==""){      
+            obj.name=groupName
+            obj.color=selectedColor
+            obj.data=""
+            setGroupsData([...groupsData, obj])
+            setOpenAddScreen(false)
+            setGroupName("")
+        }else{
+            setError(true)
+        }
     }
 
     function onCancelClick() {
@@ -25,15 +36,28 @@ function GroupsSide(){
         setGroupName("")
     }
 
+    const getInitials = (name) => {
+        const words = name.split(' ');
+        if (words.length > 1) {
+          return words.map((word) => word[0].toUpperCase()).join('');
+        }
+        return name[0].toUpperCase();
+      };
+
     return(
         <div className={styles.groups}>    
             <div className={styles.header}>
                 <p className={styles.headerText}>Pocket Notes</p>
             </div>
             <div className={styles.groupList}>
-                {groupsData.map((groupName) => (
-                    <p key={groupName.name} style={{ color: groupName.color}}>{groupName.name}</p>
-                ))} 
+                {groupsData.map((group) => (
+                    <div key={group.name} className={styles.nameIconItem}>
+                        <div className={styles.circleIcon} style={{ backgroundColor: group.color }}>
+                            <p className={styles.initials}>{getInitials(group.name)}</p>
+                        </div>
+                        <p style={{ color: "black" }}>{group.name}</p>
+                    </div>
+                ))}
             </div>
             <div className={styles.addIcon} onClick={()=>{setOpenAddScreen(true)}}>
                 <img src={addIcon} alt="add"/>
@@ -51,6 +75,9 @@ function GroupsSide(){
                                 onChange={(e) => setGroupName(e.target.value)}
                             />
                         </div>
+                        {error && (
+                            <p style={{color: "red", width: "100%"}}>Enter Group Name</p>
+                        )}
                         <div className={styles.groupName}>
                             <p>Choose Color</p>
                             <div className={styles.colorOptions}>
