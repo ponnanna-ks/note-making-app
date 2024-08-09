@@ -7,17 +7,8 @@
     width: 25vw
 }
 
-.groupList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  flex-direction: column;
-  overflow-y: auto;
-}
-
 .groupName {
   display: flex;
-  flex-direction: column;
 }
 
 .headerText {
@@ -130,8 +121,16 @@
   border: 3px solid #af00f4;
 }
 
+
+.groupList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .nameIconItem {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
