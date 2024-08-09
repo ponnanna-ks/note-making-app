@@ -7,7 +7,7 @@ function GroupsSide(){
     const colors = ["#B38BFA", "#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]; 
     let obj={"name":"","color":"", "data":""}
 
-    const {groupsData, setGroupsData} = useContext(AppContext)
+    const {groupsData, setGroupsData, setSelectedGroup} = useContext(AppContext)
     const [openAddScreen, setOpenAddScreen] = useState(false)
     const [groupName, setGroupName] = useState("")
     const [selectedColor, setSelectedColor] = useState(colors[0]); 
@@ -62,7 +62,9 @@ function GroupsSide(){
             </div>
             <div className={styles.groupList}>
                 {groupsData.map((group) => (
-                    <div key={group.name} className={styles.nameIconItem}>
+                    <div key={group.name} 
+                        className={styles.nameIconItem} 
+                        onClick={()=>setSelectedGroup(group)}>
                         <div className={styles.circleIcon} style={{ backgroundColor: group.color }}>
                             <p className={styles.initials}>{getInitials(group.name)}</p>
                         </div>

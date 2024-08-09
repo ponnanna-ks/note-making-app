@@ -135,6 +135,10 @@
   align-items: center;
 }
 
+.nameIconItem:hover {
+  cursor: pointer;
+}
+
 .circleIcon {
   width: 50px;
   height: 50px; 

@@ -4,6 +4,7 @@ export const AppContext = createContext()
 
 export const AppProvider = ({children}) => {
     const [groupsData, setGroupsData] = useState([])
+    const [selectedGroup, setSelectedGroup] = useState({})
     
     useEffect(() => {
         if(groupsData.length>0){  
@@ -26,7 +27,9 @@ export const AppProvider = ({children}) => {
         <AppContext.Provider
             value={{
                 groupsData,
-                setGroupsData
+                setGroupsData,
+                selectedGroup,
+                setSelectedGroup
             }}
         >
             {children}
