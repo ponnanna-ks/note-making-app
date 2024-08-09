@@ -23,7 +23,7 @@ function GroupsSide(){
         if(groupName !=="" && selectedColor !==""){      
             obj.name=groupName
             obj.color=selectedColor
-            obj.data=""
+            obj.data=[]
             setGroupsData([...groupsData, obj])
             setOpenAddScreen(false)
             setGroupName("")
