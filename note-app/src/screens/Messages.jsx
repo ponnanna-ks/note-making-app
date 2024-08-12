@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./Messages.module.css"
 import { AppContext } from "../context/AppContext";
 import emptyPic from "../assets/empty_image.png"
@@ -8,9 +8,9 @@ import { getInitials } from "../utils/utils";
 function Messages() {
     const {selectedGroup, setSelectedGroup, groupsData, setGroupsData} = useContext(AppContext)
     const [textAreaData, setTextAreaData] = useState("")
+    const textAreaRef = useRef(null)
 
     function handleSaveClick() {
-        console.log("Here")
         const updatedGroups = groupsData.map(group => {
             if (group.name === selectedGroup.name) {
                 setSelectedGroup({ ...group, data: [...group.data,textAreaData] })
@@ -20,6 +20,11 @@ function Messages() {
         });
         setGroupsData(updatedGroups);
         setTextAreaData("")
+        textAreaRef.current.textContent = "";
+    }
+
+    function handleInput(e) {
+        setTextAreaData(e.target.textContent);
     }
 
     return (
@@ -49,20 +54,19 @@ function Messages() {
                         <div className={styles.textAreaDiv}>
                             <span 
                                 contentEditable="true" 
-                                value={textAreaData}
-                                onChange={e => setTextAreaData(e.target.value)}
+                                onInput={handleInput}
+                                ref={textAreaRef}
                             >
-                                
                             </span>
-                            
-                        <AiOutlineSend className={styles.sendIcon} onClick={handleSaveClick}/>
+                            <div className={styles.sendIcon}>
+                                <AiOutlineSend onClick={handleSaveClick} />
+                            </div>
                         </div>
                         
                     </div>      
             }
             
-        </div>
-        
+        </div>     
     )
 }
 
