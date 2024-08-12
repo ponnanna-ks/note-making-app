@@ -4,6 +4,7 @@ import { AppContext } from "../context/AppContext";
 import emptyPic from "../assets/empty_image.png"
 import { AiFillLock, AiOutlineSend} from "react-icons/ai";
 import { getInitials } from "../utils/utils";
+import MessageItem from "../components/MessageItem";
 
 function Messages() {
     const {selectedGroup, setSelectedGroup, groupsData, setGroupsData} = useContext(AppContext)
@@ -48,9 +49,11 @@ function Messages() {
                             </div>
                             <p style={{ color: "white" }}>{selectedGroup.name}</p>
                         </div>
-                        {selectedGroup["data"]?.map((item, index) => (
-                            <p key={index}>{item}</p>
-                        ))}
+                        <div className={styles.messageList}>
+                            {selectedGroup["data"]?.map((item, index) => (
+                                <MessageItem messageData={item}/>
+                            ))}
+                        </div>
                         <div className={styles.textAreaDiv}>
                             <span 
                                 contentEditable="true" 

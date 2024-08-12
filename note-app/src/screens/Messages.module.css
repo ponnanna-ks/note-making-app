@@ -13,6 +13,10 @@
     width: 100%;
 }
 
+.messageList {
+    overflow-y: scroll;
+}
+
 img {
     display: block;
     margin: 10% auto 20px auto;
