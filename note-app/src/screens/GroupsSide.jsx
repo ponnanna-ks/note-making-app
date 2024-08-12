@@ -3,6 +3,7 @@ import styles from "./Groups.module.css"
 
 import addIcon from "../assets/Add_icon.png"
 import { AppContext } from "../context/AppContext";
+import { getInitials } from "../utils/utils";
 function GroupsSide(){
     const colors = ["#B38BFA", "#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]; 
     let obj={"name":"","color":"", "data":""}
@@ -40,20 +41,6 @@ function GroupsSide(){
         setSelectedColor(colors[0])
         setError(false)
     }
-
-    function stripSpaces(str) {
-        if(!str) return str;
-        return str.replace(/^\s+/g, '');
-    }
-
-    const getInitials = (name) => {
-        name = stripSpaces(name)
-        const words = name.split(' ', 2);
-        if (words.length > 1) {
-          return words.map((word) => word[0].toUpperCase()).join('');
-        }
-        return name[0].toUpperCase();
-    };
 
     return(
         <div className={styles.groups}>    
