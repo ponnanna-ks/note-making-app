@@ -14,6 +14,7 @@
 }
 
 .messageList {
+    height: 380px;
     overflow-y: scroll;
 }
 
@@ -47,6 +48,7 @@ img {
     align-items: center;
     background-color: #001F8B;
     padding: 10px;
+    margin-bottom: 5px;
 }
 
 .circleIcon {
