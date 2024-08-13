@@ -15,7 +15,7 @@ function Messages() {
         const updatedGroups = groupsData.map(group => {
             if (group.name === selectedGroup.name) {
                 setSelectedGroup({ ...group, data: [...group.data,textAreaData] })
-                return { ...group, data: [...group.data,textAreaData] };
+                return { ...group, data: [...group.data,{message:textAreaData, timeStamp: Date.now()}]};
             }
             return group;
         });
