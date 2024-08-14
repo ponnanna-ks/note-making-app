@@ -102,3 +102,31 @@ img {
     cursor: pointer;
     pointer-events: all;
 }
+
+.messageContainer {
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .backButton {
+    display: none;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .backButton p {
+    margin-left: 5px;
+  }
+  
+  @media (max-width: 600px) {
+    .backButton {
+      display: flex;
+    }
+
+    .textAreaDiv {
+        width: 100vw;
+    }
+  }
+  

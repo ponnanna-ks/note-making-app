@@ -14,3 +14,24 @@
   width: 25vw;
   background-color: white;
 }
+
+@media (max-width: 600px) {
+  .Messages {
+    display: none;
+  }
+
+  .Groups {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .App.message-view .Groups {
+    display: none;
+  }
+
+  .App.message-view .Messages {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+  }
+}

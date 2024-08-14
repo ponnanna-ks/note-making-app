@@ -4,7 +4,7 @@ import styles from "./Groups.module.css"
 import addIcon from "../assets/Add_icon.png"
 import { AppContext } from "../context/AppContext";
 import { getInitials } from "../utils/utils";
-function GroupsSide(){
+function GroupsSide({onGroupClick}){
     const colors = ["#B38BFA", "#FF79F2", "#43E6FC", "#F19576", "#0047FF", "#6691FF"]; 
     let obj={"name":"","color":"", "data":""}
 
@@ -51,7 +51,11 @@ function GroupsSide(){
                 {groupsData.map((group) => (
                     <div key={group.name} 
                         className={styles.nameIconItem} 
-                        onClick={()=>setSelectedGroup(group)}>
+                        onClick={() => { 
+                            setSelectedGroup(group);
+                            onGroupClick();
+                        }}
+                    >
                         <div className={styles.circleIcon} style={{ backgroundColor: group.color }}>
                             <p className={styles.initials}>{getInitials(group.name)}</p>
                         </div>
