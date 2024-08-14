@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/note-making-app/static/css/main.a47a97b7.css",
+    "main.js": "/note-making-app/static/js/main.267db16a.js",
+    "static/media/empty_image.png": "/note-making-app/static/media/empty_image.051c5dd6cf08bd17366f.png",
+    "index.html": "/note-making-app/index.html",
+    "main.a47a97b7.css.map": "/note-making-app/static/css/main.a47a97b7.css.map",
+    "main.267db16a.js.map": "/note-making-app/static/js/main.267db16a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a47a97b7.css",
+    "static/js/main.267db16a.js"
+  ]
+}
