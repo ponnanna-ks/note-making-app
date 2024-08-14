@@ -63,6 +63,7 @@ function Messages() {
                                 contentEditable="true" 
                                 onInput={handleInput}
                                 ref={textAreaRef}
+                                className={styles.textAreaSpan}
                             >
                             </span>
                             <div className={styles.sendIcon}>
