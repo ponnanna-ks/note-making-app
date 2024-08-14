@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/note-making-app/static/css/main.a47a97b7.css",
-    "main.js": "/note-making-app/static/js/main.267db16a.js",
-    "static/media/empty_image.png": "/note-making-app/static/media/empty_image.051c5dd6cf08bd17366f.png",
-    "index.html": "/note-making-app/index.html",
-    "main.a47a97b7.css.map": "/note-making-app/static/css/main.a47a97b7.css.map",
-    "main.267db16a.js.map": "/note-making-app/static/js/main.267db16a.js.map"
+    "main.css": "/static/css/main.d87877c1.css",
+    "main.js": "/static/js/main.d8e6c089.js",
+    "static/media/empty_image.png": "/static/media/empty_image.051c5dd6cf08bd17366f.png",
+    "index.html": "/index.html",
+    "main.d87877c1.css.map": "/static/css/main.d87877c1.css.map",
+    "main.d8e6c089.js.map": "/static/js/main.d8e6c089.js.map"
   },
   "entrypoints": [
-    "static/css/main.a47a97b7.css",
-    "static/js/main.267db16a.js"
+    "static/css/main.d87877c1.css",
+    "static/js/main.d8e6c089.js"
   ]
 }
