@@ -12,20 +12,22 @@ function Messages({setView}) {
     const textAreaRef = useRef(null)
 
     function handleSaveClick() {
-        const updatedGroups = groupsData.map(group => {
-            if (group.name === selectedGroup.name) {
-                setSelectedGroup({ ...group, 
-                    data: [...group.data, {message:textAreaData, timeStamp: Date.now()}]
-                })
-                return { ...group, 
+        if(textAreaData){
+            const updatedGroups = groupsData.map(group => {
+                if (group.name === selectedGroup.name) {
+                    setSelectedGroup({ ...group, 
                         data: [...group.data, {message:textAreaData, timeStamp: Date.now()}]
-                    };
-            }
-            return group;
-        });
-        setGroupsData(updatedGroups);
-        setTextAreaData("")
-        textAreaRef.current.textContent = "";
+                    })
+                    return { ...group, 
+                            data: [...group.data, {message:textAreaData, timeStamp: Date.now()}]
+                        };
+                }
+                return group;
+            });
+            setGroupsData(updatedGroups);
+            setTextAreaData("")
+            textAreaRef.current.textContent = "";
+        }
     }
 
     function handleInput(e) {
