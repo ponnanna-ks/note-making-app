@@ -32,6 +32,13 @@ function Messages() {
         setTextAreaData(e.target.textContent);
     }
 
+    function handleKeyDown (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleSaveClick(); 
+        }
+    };
+
     return (
         <div>
             {Object.keys(selectedGroup).length === 0 
@@ -62,6 +69,7 @@ function Messages() {
                             <span 
                                 contentEditable="true" 
                                 onInput={handleInput}
+                                onKeyDown={handleKeyDown}
                                 ref={textAreaRef}
                                 className={styles.textAreaSpan}
                             >
